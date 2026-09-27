@@ -19,9 +19,9 @@ En casa, sin servidor: en el desplegable elegí **demo@demo** (ya viene usuario 
 ## APK
 
 - **Local (probar ya):** `flutter build apk --release`  
-  Sale en `build/app/outputs/flutter-apk/app-release.apk`.
+  Sale en `build/app/outputs/flutter-apk/app-release.apk` (en GitHub se publica como `maic-mobile.apk`).
 - **GitHub (compartir):** Actions → *Android APK* → Run workflow.  
-  Un tag `v0.1.0` además crea un [Release](https://github.com/JRNCarrizo/maic-mobile/releases) con la APK.
+  Un tag `v0.1.1` crea un [Release](https://github.com/JRNCarrizo/maic-mobile/releases) con `maic-mobile.apk`.
 
 Hoy el release se firma con la key de debug. Para Play Store hace falta un keystore de la empresa.
 

@@ -22,6 +22,9 @@ class EventsViewState {
   final bool acting;
   final String? message;
 
+  int get activeAlarmCount =>
+      alarms.where((alarm) => alarm.isActive).length;
+
   EventsViewState copyWith({
     List<MaicAlarm>? alarms,
     List<MaicEvent>? events,

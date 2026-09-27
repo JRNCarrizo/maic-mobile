@@ -1,7 +1,7 @@
 name: maic_mobile
 description: Cliente móvil MAIC.Android + iOS. Habla solo con MAIC Server.
 publish_to: "none"
-version: 0.1.0+1
+version: 0.1.1+2
 
 environment:
   sdk: ^3.13.4
@@ -24,6 +24,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/branding/maic_launcher.png
+  adaptive_icon_background: "#0D1518"
+  adaptive_icon_foreground: assets/branding/maic_launcher.png
+  min_sdk_android: 24
+  remove_alpha_ios: true
 
 flutter:
   uses-material-design: true

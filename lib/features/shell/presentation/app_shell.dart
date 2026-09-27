@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../ui/theme/maic_colors.dart';
 import '../../auth/presentation/home_screen.dart';
+import '../../events/application/events_controller.dart';
 import '../../events/presentation/events_screen.dart';
 import '../../units/presentation/units_screen.dart';
 
-class AppShell extends StatefulWidget {
+class AppShell extends ConsumerStatefulWidget {
   const AppShell({super.key});
 
   @override
-  State<AppShell> createState() => _AppShellState();
+  ConsumerState<AppShell> createState() => _AppShellState();
 }
 
-class _AppShellState extends State<AppShell> {
+class _AppShellState extends ConsumerState<AppShell> {
   int _index = 0;
 
   @override
   Widget build(BuildContext context) {
+    final activeAlarms = ref.watch(
+      eventsControllerProvider.select((state) => state.activeAlarmCount),
+    );
+
     return Scaffold(
       body: IndexedStack(
         index: _index,
@@ -29,24 +36,45 @@ class _AppShellState extends State<AppShell> {
           if (value == _index) return;
           setState(() => _index = value);
         },
-        destinations: const [
-          NavigationDestination(
+        destinations: [
+          const NavigationDestination(
             icon: Icon(Icons.videocam_outlined),
             selectedIcon: Icon(Icons.videocam),
             label: 'Cámaras',
           ),
           NavigationDestination(
-            icon: Icon(Icons.notifications_outlined),
-            selectedIcon: Icon(Icons.notifications),
+            icon: _AlarmIcon(count: activeAlarms, selected: false),
+            selectedIcon: _AlarmIcon(count: activeAlarms, selected: true),
             label: 'Alarmas',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person),
             label: 'Sesión',
           ),
         ],
       ),
+    );
+  }
+}
+
+class _AlarmIcon extends StatelessWidget {
+  const _AlarmIcon({required this.count, required this.selected});
+
+  final int count;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = Icon(
+      selected ? Icons.notifications : Icons.notifications_outlined,
+    );
+    if (count <= 0) return icon;
+    return Badge(
+      backgroundColor: MaicColors.offline,
+      textColor: Colors.white,
+      label: Text(count > 99 ? '99+' : '$count'),
+      child: icon,
     );
   }
 }
