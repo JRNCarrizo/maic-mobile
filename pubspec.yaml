@@ -1,0 +1,31 @@
+name: maic_mobile
+description: Cliente móvil MAIC.Android + iOS. Habla solo con MAIC Server.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  dio: ^5.9.0
+  flutter_riverpod: ^2.6.1
+  go_router: ^16.2.4
+  shared_preferences: ^2.5.3
+  uuid: ^4.5.1
+  flutter_vlc_player_16kb: ^7.4.7
+  video_player: ^2.10.0
+  signalr_netcore: ^1.4.4
+  gal: ^2.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/demo/sample.mp4

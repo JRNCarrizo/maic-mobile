@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cleartext solo porque el relay mobile actual entrega HTTP MPEG-TS (contrato §4.3).
+     La API MAIC sigue en HTTPS. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
